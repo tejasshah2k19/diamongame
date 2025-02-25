@@ -52,10 +52,12 @@
     <GridLayout
         android:layout_below="@id/linearHeading"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="300dp"
         android:columnCount="4"
         android:rowCount="4"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_marginTop="200dp"
+        >
 
         <!-- 16 ImageButtons for 4x4 Grid -->
         <ImageButton
@@ -63,9 +65,66 @@
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:id="@+id/imgBtn0"
+
             android:scaleType="centerInside"
             android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
+            android:background="@drawable/tiles"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:id="@+id/imgBtn1"
+
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_launcher_foreground"
+            android:background="@drawable/tiles"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:id="@+id/imgBtn2"
+
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_launcher_foreground"
+            android:background="@drawable/tiles"/> 
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:id="@+id/imgBtn3"
+
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_launcher_foreground"
+            android:background="@drawable/tiles"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:id="@+id/imgBtn4"
+
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_launcher_foreground"
+            android:background="@drawable/tiles"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:id="@+id/imgBtn5"
+
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_launcher_foreground"
+            android:background="@drawable/tiles"/>
 
         <ImageButton
             android:layout_width="0dp"
@@ -73,8 +132,10 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:scaleType="centerInside"
+            android:id="@+id/imgBtn6"
+
             android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
+            android:background="@drawable/tiles"/>
 
         <ImageButton
             android:layout_width="0dp"
@@ -82,125 +143,96 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:scaleType="centerInside"
+            android:id="@+id/imgBtn7"
+
             android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
+            android:background="@drawable/tiles"/>
 
         <ImageButton
             android:layout_width="0dp"
+            android:id="@+id/imgBtn8"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:scaleType="centerInside"
             android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
+            android:background="@drawable/tiles"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/imgBtn9"
+
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_launcher_foreground"
+            android:background="@drawable/tiles"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/imgBtn10"
+
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_launcher_foreground"
+            android:background="@drawable/tiles"/>
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
+            android:id="@+id/imgBtn11"
+
             android:layout_rowWeight="1"
             android:scaleType="centerInside"
             android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
+            android:background="@drawable/tiles"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/imgBtn12"
+
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_launcher_foreground"
+            android:background="@drawable/tiles"/>
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
+            android:id="@+id/imgBtn13"
+
             android:layout_rowWeight="1"
             android:scaleType="centerInside"
             android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
+            android:background="@drawable/tiles"/>
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
+            android:id="@+id/imgBtn14"
+
             android:layout_rowWeight="1"
             android:scaleType="centerInside"
             android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
+            android:background="@drawable/tiles"/>
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
+            android:id="@+id/imgBtn15"
             android:layout_rowWeight="1"
             android:scaleType="centerInside"
             android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_launcher_foreground"
-            android:background="@android:color/transparent"/>
+            android:background="@drawable/tiles"/>
 
     </GridLayout>
 
