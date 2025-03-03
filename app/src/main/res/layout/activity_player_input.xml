@@ -28,25 +28,49 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/edtInputPlayerName"
+            android:id="@+id/edtInputFirstName"
             android:background="@drawable/rounded_edittext"
             android:padding="10dp"
             android:textColor="@android:color/holo_orange_dark"
             android:textSize="16sp"
-            android:hint="Player name"
+            android:hint="First name"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/edtInputLastName"
+            android:background="@drawable/rounded_edittext"
+            android:padding="10dp"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:hint="Last name"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/edtInputEmail"
+            android:background="@drawable/rounded_edittext"
+            android:padding="10dp"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:hint="Email"
             />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/edtInputPlayerAmount"
-            android:layout_marginTop="20dp"
+            android:id="@+id/edtInputPassword"
             android:background="@drawable/rounded_edittext"
             android:padding="10dp"
             android:textColor="@android:color/holo_orange_dark"
             android:textSize="16sp"
-            android:hint="Bet amount"
+            android:layout_marginTop="20dp"
+            android:hint="Password"
             />
+
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
