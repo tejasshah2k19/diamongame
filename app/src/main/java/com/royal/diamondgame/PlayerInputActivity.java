@@ -115,7 +115,7 @@ public class PlayerInputActivity extends AppCompatActivity {
 
         Log.i("api",jsonString);
 
-        String apiURL = "https://diamondgame.onrender.com/api/users";
+        String apiURL = "https://diamondgame.onrender.com/api/auth/signup";
 
         URL url = new URL(apiURL);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
