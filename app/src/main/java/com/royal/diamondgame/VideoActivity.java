@@ -36,7 +36,7 @@ public class VideoActivity extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(4000);
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                     startActivity(intent);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);

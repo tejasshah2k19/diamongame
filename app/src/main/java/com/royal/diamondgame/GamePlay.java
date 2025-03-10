@@ -1,6 +1,7 @@
 package com.royal.diamondgame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +15,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.json.JSONObject;
+
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class GamePlay extends AppCompatActivity {
 
@@ -25,7 +34,8 @@ public class GamePlay extends AppCompatActivity {
 
     Integer winningAmount = 0;
     Integer betAmount =0;
-
+    String userId;
+    int credit;
     ImageButton imgBtn[] = new ImageButton[16];
 
     Integer bomb[] = new Integer[4];
@@ -43,10 +53,14 @@ public class GamePlay extends AppCompatActivity {
             return insets;
         });
 
-        Intent intent = getIntent();
 
-        String userName = intent.getStringExtra("userName");
-       betAmount = intent.getIntExtra("betAmount",0);
+        SharedPreferences preferences = getSharedPreferences("diamond_game",MODE_PRIVATE);
+
+
+         String userName = preferences.getString("firstName","Guest");
+         betAmount = 500;
+         credit = preferences.getInt("credit",0);
+         userId = preferences.getString("userId","-1");
 
         tvUserName = findViewById(R.id.tvGamePlayUserName);
         tvBetAmount = findViewById(R.id.tvGamePlayBetAmount);
@@ -75,7 +89,7 @@ public class GamePlay extends AppCompatActivity {
 
 
         for(int i=0;i<bomb.length;i++){
-            int index =  (int)(Math.random()*bomb.length);//0...15
+            int index =  (int)(Math.random()*imgBtn.length);//0...15
             Log.i("gamePlay","bomb set on "+index);
             bombList.add(imgBtn[index]);
          }
@@ -97,6 +111,17 @@ public class GamePlay extends AppCompatActivity {
         if(bombList.contains(clickBtn)){
             Log.i("gamePlay","Blast");
             clickBtn.setBackground(getDrawable(R.drawable.bomb));
+            //minus
+            ExecutorService ex = Executors.newSingleThreadExecutor();
+            ex.submit(new Callable<Object>() {
+                @Override
+                public Object call() throws Exception {
+                    updateCreditApi(userId,-betAmount);
+                    return null;
+                }
+            });
+
+
         }else{
             clickBtn.setBackground(getDrawable(R.drawable.diamond));
             Log.i("gamePlay","Diamond");
@@ -106,5 +131,31 @@ public class GamePlay extends AppCompatActivity {
 
     }
 
+    private void updateCreditApi(String userId,int betAmount){
+        String apiURL = "https://diamondgame.onrender.com/api/users/credit/"+userId;
+        try {
+            URL url = new URL(apiURL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("PUT");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setDoOutput(true);
+            connection.setDoInput(true);
+
+            Log.i("api","url => "+apiURL);
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("credit",betAmount);
+
+            try (OutputStream os = connection.getOutputStream()) {
+                byte[] input = jsonObject.toString().getBytes();
+                os.write(input, 0, input.length);
+            }
+
+            int responseCode = connection.getResponseCode();
+            Log.i("api","response code => "+responseCode);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }

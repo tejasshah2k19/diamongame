@@ -2,4 +2,6 @@
     <string name="app_name">DiamondGame</string>
     <string name="play">PLAY</string>
     <string name="leaderboard">Leaderboard</string>
+    <string name="login">Login</string>
+    <string name="new_user">New User?</string>
 </resources>

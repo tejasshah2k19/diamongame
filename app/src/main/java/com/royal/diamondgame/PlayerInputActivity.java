@@ -87,7 +87,7 @@ public class PlayerInputActivity extends AppCompatActivity {
                  Thread t = new Thread(r);
                  t.start();
 
-                Intent intent = new Intent(getApplicationContext(), GamePlay.class);//Login
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);//Login
 //                intent.putExtra("userName",userName);
 //                intent.putExtra("betAmount",betAmount);
                 startActivity(intent);
