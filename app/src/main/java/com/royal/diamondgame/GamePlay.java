@@ -36,6 +36,7 @@ public class GamePlay extends AppCompatActivity {
     Integer betAmount =0;
     String userId;
     int credit;
+    String token;
     ImageButton imgBtn[] = new ImageButton[16];
 
     Integer bomb[] = new Integer[4];
@@ -61,6 +62,7 @@ public class GamePlay extends AppCompatActivity {
          betAmount = 500;
          credit = preferences.getInt("credit",0);
          userId = preferences.getString("userId","-1");
+         token = preferences.getString("token","-1");
 
         tvUserName = findViewById(R.id.tvGamePlayUserName);
         tvBetAmount = findViewById(R.id.tvGamePlayBetAmount);
@@ -127,8 +129,11 @@ public class GamePlay extends AppCompatActivity {
             Log.i("gamePlay","Diamond");
             winningAmount = winningAmount + betAmount;
             tvWiningAmount.setText(winningAmount+"");
-        }
 
+//            updateCreditApi(userId,winningAmount);
+        }
+        //cashout
+        clickBtn.setEnabled(false);
     }
 
     private void updateCreditApi(String userId,int betAmount){
@@ -139,8 +144,12 @@ public class GamePlay extends AppCompatActivity {
             connection.setRequestMethod("PUT");
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestProperty("Authorization", "Bearer "+token);
+
             connection.setDoOutput(true);
             connection.setDoInput(true);
+
+
 
             Log.i("api","url => "+apiURL);
             JSONObject jsonObject = new JSONObject();

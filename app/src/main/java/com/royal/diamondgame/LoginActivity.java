@@ -152,6 +152,7 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("lastName",user.getString("lastName"));
                 editor.putInt("credit",user.getInt("credit"));
                 editor.putString("userId",user.getString("_id"));
+                editor.putString("token",jsonObjectResp.getString("token"));
                 editor.apply(); //save
 
                 return 200;
