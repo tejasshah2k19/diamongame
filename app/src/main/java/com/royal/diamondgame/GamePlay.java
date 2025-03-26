@@ -59,7 +59,7 @@ public class GamePlay extends AppCompatActivity {
 
 
          String userName = preferences.getString("firstName","Guest");
-         betAmount = 500;
+
          credit = preferences.getInt("credit",0);
          userId = preferences.getString("userId","-1");
          token = preferences.getString("token","-1");
@@ -69,6 +69,9 @@ public class GamePlay extends AppCompatActivity {
         tvWiningAmount = findViewById(R.id.tvGamePlayWinningAmount);
 
         tvUserName.setText(userName);
+
+        //sp read -> bet
+        betAmount = 500;//sp bet amt
         tvBetAmount.setText(betAmount+"");
         tvWiningAmount.setText(winningAmount+"");
 
@@ -144,7 +147,7 @@ public class GamePlay extends AppCompatActivity {
             connection.setRequestMethod("PUT");
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("Accept", "application/json");
-            connection.setRequestProperty("Authorization", "Bearer "+token);
+            connection.setRequestProperty("Authorization",token);
 
             connection.setDoOutput(true);
             connection.setDoInput(true);

@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                   if(resp == 200){
                       Toast.makeText(LoginActivity.this, "Login success", Toast.LENGTH_SHORT).show();
                     //intetn -> GamePlay
-                    Intent intent =new Intent(getApplicationContext(), GamePlay.class);
+                    Intent intent =new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
 
                   }else if(resp == 400){
