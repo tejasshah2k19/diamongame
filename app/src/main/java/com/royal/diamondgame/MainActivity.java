@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
                         //bet amt userInput
                         //startACtivity -> game
 
+                        Intent intent = new Intent(getApplicationContext(), GamePlay.class);
+                        startActivity(intent);
+
 
                     }
                 });
@@ -100,5 +103,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        leaderBoradButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LeaderboardActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
