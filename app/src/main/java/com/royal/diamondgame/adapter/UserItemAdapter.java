@@ -48,7 +48,7 @@ public class UserItemAdapter extends  BaseAdapter {
 
         UserModel item = itemList.get(position);
         nameTextView.setText(item.getFirstName());
-        creditTextView.setText(item.getCredit());
+        creditTextView.setText(item.getCredit()+"");
 
         return convertView;
     }

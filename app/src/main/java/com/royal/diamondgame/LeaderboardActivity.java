@@ -25,16 +25,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.lang.reflect.Type;
+import java.util.concurrent.Future;
+
 import com.google.gson.reflect.TypeToken;
 
 public class LeaderboardActivity extends AppCompatActivity {
 
     private ListView listView;
     private UserItemAdapter adapter;
-    private List<UserModel> itemList;
+    private ArrayList<UserModel> itemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,15 +55,24 @@ public class LeaderboardActivity extends AppCompatActivity {
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-        executorService.submit(new Callable<ArrayList<UserModel>>() {
+       Future<ArrayList<UserModel>> ft = executorService.submit(new Callable<ArrayList<UserModel>>() {
        @Override
             public ArrayList<UserModel> call() throws Exception {
-                return leaderBoardApi();
-            }
+                itemList =  leaderBoardApi();
+             adapter = new UserItemAdapter(getApplicationContext(), itemList);
+             listView.setAdapter(adapter);
+              return  itemList;
+
+       }
         });
 
-        adapter = new UserItemAdapter(this, itemList);
-        listView.setAdapter(adapter);
+        try {
+             ft.get();
+        } catch (ExecutionException e) {
+            //throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            //throw new RuntimeException(e);
+        }
 
     }//onCreate
 
@@ -74,17 +86,13 @@ public class LeaderboardActivity extends AppCompatActivity {
            String token =  preferences.getString("token","");
 
            Log.i("api","token => "+token);
+           Log.i("api",apiURL);
     try{
         URL url = new URL(apiURL);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Accept", "application/json");
-        connection.setRequestProperty("Authorization",token);
-        connection.setDoOutput(true);
-        connection.setDoInput(true);
 
-
+        connection.connect();
 
         int responseCode = connection.getResponseCode();
 
@@ -101,8 +109,7 @@ public class LeaderboardActivity extends AppCompatActivity {
                 scanner.close();
                 Log.i("api", "api response => " + response.toString());
 
-                JSONObject jsonObjectResp = new JSONObject(response.toString());
-                JSONArray user = jsonObjectResp.getJSONArray("user");
+
 
                 Gson gson = new Gson();
                 Type listType = new TypeToken<ArrayList<UserModel>>() {}.getType();
@@ -114,7 +121,7 @@ public class LeaderboardActivity extends AppCompatActivity {
             e.printStackTrace();
             Log.i("api","error = > "+e.getMessage());
         }
-            return null;
+            return new ArrayList<>();
     }
 
 
