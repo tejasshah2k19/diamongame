@@ -39,6 +39,8 @@ public class GamePlay extends AppCompatActivity {
     String token;
     ImageButton imgBtn[] = new ImageButton[16];
 
+    int playCount =0 ;
+
     Integer bomb[] = new Integer[4];
     ArrayList<ImageButton> bombList = new ArrayList<>();
 
@@ -112,30 +114,40 @@ public class GamePlay extends AppCompatActivity {
         Log.i("gamePlay",view.getId()+"");
 
         ImageButton clickBtn = findViewById(view.getId());
-
-        if(bombList.contains(clickBtn)){
-            Log.i("gamePlay","Blast");
+        playCount++;
+        if(bombList.contains(clickBtn)) {
+            Log.i("gamePlay", "Blast");
             clickBtn.setBackground(getDrawable(R.drawable.bomb));
             //minus
+            //Totas for Game Over
             ExecutorService ex = Executors.newSingleThreadExecutor();
             ex.submit(new Callable<Object>() {
                 @Override
                 public Object call() throws Exception {
-                    updateCreditApi(userId,-betAmount);
+                    updateCreditApi(userId, -betAmount);
                     return null;
                 }
             });
 
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
 
-        }else{
+        }else {
+
             clickBtn.setBackground(getDrawable(R.drawable.diamond));
-            Log.i("gamePlay","Diamond");
+            Log.i("gamePlay", "Diamond");
             winningAmount = winningAmount + betAmount;
-            tvWiningAmount.setText(winningAmount+"");
+            tvWiningAmount.setText(winningAmount + "");
 
-//            updateCreditApi(userId,winningAmount);
+            if(playCount == 3){
+                //Wining toaster
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
+
         }
-        //cashout
+//            updateCreditApi(userId,winningAmount);
+         //cashout
         clickBtn.setEnabled(false);
     }
 
